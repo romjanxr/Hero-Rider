@@ -1,0 +1,9 @@
+.img-width{
+    width: 25%;
+}
+
+@media only screen and (max-width: 576px){
+    .img-width{
+        width: 50%;
+    }
+}

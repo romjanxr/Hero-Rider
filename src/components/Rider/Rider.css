@@ -1,0 +1,9 @@
+.form-width{
+    width: 40%;
+}
+
+@media only screen and (max-width: 576px){
+    .form-width{
+        width: 90%;
+    }
+}
