@@ -1,22 +1,22 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import './Rider.css'
 
 const Rider = () => {
-    const [user, setUser] = useState({ role: 'rider' });
+    const [user, setUser] = useState({ role: 'Rider' });
     const [validated, setValidated] = useState(false);
     const [dl, setDl] = useState(null);
     const [nid, setNid] = useState(null);
     const [profile, setProfile] = useState(null);
     const { registerUser } = useAuth();
-
-    console.log(user)
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         if (user.password === user.cPassword) {
-            registerUser(user.email, user.password);
+            registerUser(user.email, user.password, navigate);
         }
 
         const form = e.currentTarget;
@@ -33,7 +33,7 @@ const Rider = () => {
         formData.append('nid', nid);
         formData.append('profile', profile);
 
-        axios.post('http://localhost:5000/riders', formData)
+        axios.post(`https://guarded-brook-42731.herokuapp.com/users?email=${user.email}`, formData)
             .then(res => console.log(res.data))
     }
     return (

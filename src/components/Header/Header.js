@@ -12,15 +12,23 @@ const Header = () => {
         <div className='bg-transparent'>
             <div className='container pt-3 d-flex justify-content-between align-items-center'>
                 <img onClick={() => navigate('/')} className='img-width' src={logo} alt="" />
-                {
-                    !user.email ? <Button onClick={() => navigate('/login')} variant="primary">
-                        Login
-                    </Button>
-                        :
-                        <Button onClick={logOut} variant="primary">
-                            Logout
-                        </Button>
-                }
+                <div>
+                    {
+                        user.email ?
+                            <>
+                                <Button className='me-3' onClick={() => navigate('/dashboard')} variant="primary">
+                                    Dashboard
+                                </Button>
+                                <Button onClick={logOut} variant="primary">
+                                    Logout
+                                </Button>
+                            </>
+                            :
+                            <Button onClick={() => navigate('/login')} variant="primary">
+                                Login
+                            </Button>
+                    }
+                </div>
             </div>
         </div>
     );

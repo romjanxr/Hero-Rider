@@ -1,5 +1,6 @@
 .img-width{
     width: 25%;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 576px){

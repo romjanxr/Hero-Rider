@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [validated, setValidated] = useState(false);
+    const navigate = useNavigate();
     const { loginUser } = useAuth();
 
     const handleSubmit = (e) => {
-        loginUser(email, password);
+        loginUser(email, password, navigate);
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
             e.stopPropagation();
